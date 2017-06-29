@@ -1,0 +1,9 @@
+1. Mengganti screenfetch dengan neofetch
+2. Menghapus figlet
+3. Membuat tampilan menjadi lebih simple
+
+Script yang dimodifikasi :
+1. debian7.sh
+2. about.sh
+3. info.sh
+4. usernew.sh
