@@ -1,7 +1,11 @@
 #!/bin/bash
-# Script hapus user SSH
-# Created by Abu Yazid Al-Busthami
+#Script untuk menghapus user
 
-read -p "Nama user SSH yang akan dihapus : " Nama
+read -p "Hapus User : " Pengguna
 
-userdel -r $Nama
+if getent passwd $Pengguna > /dev/null 2>&1; then
+        userdel $Pengguna
+        echo -e "User $Pengguna telah dihapus."
+else
+        echo -e "GAGAL: User $Pengguna tidak ada."
+fi
