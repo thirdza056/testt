@@ -39,7 +39,7 @@ cat jcameron-key.asc | apt-key add -;rm jcameron-key.asc
 apt-get update
 
 # install webserver
-apt-get -y install nginx
+#apt-get -y install nginx
 
 # install essential package
 apt-get -y install bmon iftop htop nmap axel nano iptables traceroute sysv-rc-conf dnsutils bc nethogs openvpn vnstat less screen psmisc apt-file whois ptunnel ngrep mtr git zsh mrtg snmp snmpd snmp-mibs-downloader unzip unrar rsyslog debsums rkhunter
@@ -53,46 +53,36 @@ sysv-rc-conf exim4 off
 apt-file update
 
 # install neofetch
-echo "deb http://dl.bintray.com/dawidd6/neofetch jessie main" | sudo tee -a /etc/apt/sources.list
-curl -L "https://bintray.com/user/downloadSubjectPublicKey?username=bintray" -o Release-neofetch.key && sudo apt-key add Release-neofetch.key && rm Release-neofetch.key
-apt-get update
-apt-get install neofetch
+#echo "deb http://dl.bintray.com/dawidd6/neofetch jessie main" | sudo tee -a /etc/apt/sources.list
+#curl -L "https://bintray.com/user/downloadSubjectPublicKey?username=bintray" -o Release-neofetch.key && sudo apt-key add Release-neofetch.key && rm Release-neofetch.key
+#apt-get update
+#apt-get install neofetch
 
-echo "clear" >> .bashrc
-echo 'echo -e "Selamat datang di server $HOSTNAME"' >> .bashrc
-echo 'echo -e "Script mod by Abu Yazid Al-Busthami"' >> .bashrc
-echo 'echo -e "Ketik menu untuk menampilkan daftar perintah"' >> .bashrc
-echo 'echo -e ""' >> .bashrc
-
-# install webserver
-cd
-rm /etc/nginx/sites-enabled/default
-rm /etc/nginx/sites-available/default
-wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/rizal180499/Auto-Installer-VPS/master/conf/nginx.conf"
-mkdir -p /home/vps/public_html
-echo "<pre>Setup by Rizal Hidayat | 081515292117</pre>" > /home/vps/public_html/index.html
-wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/nifira123/debian7_32bit/master/vps.conf"
-service nginx restart
+#echo "clear" >> .bashrc
+#echo 'echo -e "Selamat datang di server $HOSTNAME"' >> .bashrc
+#echo 'echo -e "Script mod by Abu Yazid Al-Busthami"' >> .bashrc
+#echo 'echo -e "Ketik menu untuk menampilkan daftar perintah"' >> .bashrc
+#echo 'echo -e ""' >> .bashrc
 
 # install openvpn
-wget -O /etc/openvpn/openvpn.tar "https://raw.github.com/arieonline/autoscript/master/conf/openvpn-debian.tar"
-cd /etc/openvpn/
-tar xf openvpn.tar
-wget -O /etc/openvpn/1194.conf "https://raw.githubusercontent.com/rizal180499/Auto-Installer-VPS/master/conf/1194.conf"
-service openvpn restart
-sysctl -w net.ipv4.ip_forward=1
-sed -i 's/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/g' /etc/sysctl.conf
-iptables -t nat -I POSTROUTING -s 192.168.100.0/24 -o eth0 -j MASQUERADE
-iptables-save > /etc/iptables_yg_baru_dibikin.conf
-wget -O /etc/network/if-up.d/iptables "https://raw.githubusercontent.com/nifira123/debian7_32bit/master/iptables"
-chmod +x /etc/network/if-up.d/iptables
-service openvpn restart
+#wget -O /etc/openvpn/openvpn.tar "https://raw.github.com/arieonline/autoscript/master/conf/openvpn-debian.tar"
+#cd /etc/openvpn/
+#tar xf openvpn.tar
+#wget -O /etc/openvpn/1194.conf "https://raw.githubusercontent.com/rizal180499/Auto-Installer-VPS/master/conf/1194.conf"
+#service openvpn restart
+#sysctl -w net.ipv4.ip_forward=1
+#sed -i 's/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/g' /etc/sysctl.conf
+#iptables -t nat -I POSTROUTING -s 192.168.100.0/24 -o eth0 -j MASQUERADE
+#iptables-save > /etc/iptables_yg_baru_dibikin.conf
+#wget -O /etc/network/if-up.d/iptables "https://raw.githubusercontent.com/nifira123/debian7_32bit/master/iptables"
+#chmod +x /etc/network/if-up.d/iptables
+#service openvpn restart
 
 #konfigurasi openvpn
-cd /etc/openvpn/
-wget -O /etc/openvpn/client.ovpn "https://raw.githubusercontent.com/nifira123/debian7_32bit/master/client-1194.conf"
-sed -i $MYIP2 /etc/openvpn/client.ovpn;
-cp client.ovpn /home/vps/public_html/
+#cd /etc/openvpn/
+#wget -O /etc/openvpn/client.ovpn "https://raw.githubusercontent.com/nifira123/debian7_32bit/master/client-1194.conf"
+#sed -i $MYIP2 /etc/openvpn/client.ovpn;
+#cp client.ovpn /home/vps/public_html/
 
 cd
 # install badvpn
@@ -108,6 +98,7 @@ cd
 # setting port ssh
 sed -i 's/Port 22/Port 22/g' /etc/ssh/sshd_config
 sed -i '/Port 22/a Port 143' /etc/ssh/sshd_config
+sed -i '/Port 22/a Port 109' /etc/ssh/sshd_config
 service ssh restart
 
 # install dropbear
@@ -124,7 +115,7 @@ cd
 
 # install squid3
 apt-get -y install squid3
-wget -O /etc/squid3/squid.conf "https://raw.githubusercontent.com/nifira123/debian7_32bit/master/squid3.conf"
+wget -O /etc/squid3/squid.conf "https://raw.githubusercontent.com/nexne/ani/master/squid3.conf"
 sed -i $MYIP2 /etc/squid3/squid.conf;
 service squid3 restart
 
@@ -138,16 +129,16 @@ service webmin restart
 
 # download script
 cd /usr/bin
-wget -O menu "https://raw.githubusercontent.com/nifira123/debian7_32bit/master/menu.sh"
-wget -O usernew "https://raw.githubusercontent.com/nifira123/debian7_32bit/master/usernew.sh"
-wget -O trial "https://raw.githubusercontent.com/nifira123/debian7_32bit/master/trial.sh"
-wget -O hapus "https://raw.githubusercontent.com/nifira123/debian7_32bit/master/hapus.sh"
-wget -O cek "https://raw.githubusercontent.com/nifira123/debian7_32bit/master/user-login.sh"
-wget -O member "https://raw.githubusercontent.com/nifira123/debian7_32bit/master/user-list.sh"
-wget -O resvis "https://raw.githubusercontent.com/nifira123/debian7_32bit/master/resvis.sh"
+wget -O menu "https://raw.githubusercontent.com/nexne/ani/master/menu.sh"
+wget -O usernew "https://raw.githubusercontent.com/nexne/ani/master/usernew.sh"
+wget -O trial "https://raw.githubusercontent.com/nexne/ani/master/trial.sh"
+wget -O hapus "https://raw.githubusercontent.com/nexne/ani/master/hapus.sh"
+wget -O cek "https://raw.githubusercontent.com/nexne/ani/master/user-login.sh"
+wget -O member "https://raw.githubusercontent.com/nexne/ani/master/user-list.sh"
+wget -O resvis "https://raw.githubusercontent.com/nexne/ani/master/resvis.sh"
 wget -O speedtest "https://raw.githubusercontent.com/ForNesiaFreak/FNS_Debian7/fornesia.com/null/speedtest_cli.py"
-wget -O info "https://raw.githubusercontent.com/nifira123/debian7_32bit/master/info.sh"
-wget -O about "https://raw.githubusercontent.com/nifira123/debian7_32bit/master/about.sh"
+wget -O info "https://raw.githubusercontent.com/nexne/ani/master/info.sh"
+wget -O about "https://raw.githubusercontent.com/nexne/ani/master/about.sh"
 echo "0 0 * * * root /usr/bin/reboot" > /etc/cron.d/reboot
 echo "* * * * * service dropbear restart" > /etc/cron.d/dropbear
 chmod +x menu
