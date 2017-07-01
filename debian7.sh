@@ -1,7 +1,6 @@
 #!/bin/bash
 #
 # Script Copyright www.fornesia.com
-# Mod by Bustami Arifin a.k.a Abu Yazid Al-Busthami
 # ==================================================
 # 
 
@@ -35,14 +34,22 @@ wget "http://www.webmin.com/jcameron-key.asc"
 cat dotdeb.gpg | apt-key add -;rm dotdeb.gpg
 cat jcameron-key.asc | apt-key add -;rm jcameron-key.asc
 
+# remove unused
+apt-get -y --purge remove samba*;
+apt-get -y --purge remove apache2*;
+apt-get -y --purge remove sendmail*;
+apt-get -y --purge remove bind9*;
+
 # update
-apt-get update
+apt-get update; apt-get -y upgrade;
 
 # install webserver
 #apt-get -y install nginx
 
 # install essential package
-apt-get -y install bmon iftop htop nmap axel nano iptables traceroute sysv-rc-conf dnsutils bc nethogs openvpn vnstat less screen psmisc apt-file whois ptunnel ngrep mtr git zsh mrtg snmp snmpd snmp-mibs-downloader unzip unrar rsyslog debsums rkhunter
+echo "mrtg mrtg/conf_mods boolean true" | debconf-set-selections
+#apt-get -y install bmon iftop htop nmap axel nano iptables traceroute sysv-rc-conf dnsutils bc nethogs openvpn vnstat less screen psmisc apt-file whois ptunnel ngrep mtr git zsh mrtg snmp snmpd snmp-mibs-downloader unzip unrar rsyslog debsums rkhunter
+apt-get -y install bmon iftop htop nmap axel nano iptables traceroute sysv-rc-conf dnsutils bc nethogs vnstat less screen psmisc apt-file whois ptunnel ngrep mtr git zsh mrtg snmp snmpd snmp-mibs-downloader unzip unrar rsyslog debsums rkhunter
 apt-get -y install build-essential
 
 # disable exim
@@ -51,6 +58,14 @@ sysv-rc-conf exim4 off
 
 # update apt-file
 apt-file update
+
+# install screenfetch
+cd
+wget 'https://raw.githubusercontent.com/ForNesiaFreak/FNS_Debian7/fornesia.com/null/screenfetch-dev'
+mv screenfetch-dev /usr/bin/screenfetch-dev
+chmod +x /usr/bin/screenfetch-dev
+echo "clear" >> .profile
+echo "screenfetch-dev" >> .profile
 
 # install neofetch
 #echo "deb http://dl.bintray.com/dawidd6/neofetch jessie main" | sudo tee -a /etc/apt/sources.list
@@ -99,6 +114,7 @@ cd
 sed -i 's/Port 22/Port 22/g' /etc/ssh/sshd_config
 sed -i '/Port 22/a Port 143' /etc/ssh/sshd_config
 sed -i '/Port 22/a Port 109' /etc/ssh/sshd_config
+sed -i 's/#Banner/Banner/g' /etc/ssh/sshd_config
 service ssh restart
 
 # install dropbear
@@ -112,6 +128,9 @@ service ssh restart
 service dropbear restart
 
 cd
+
+# install fail2ban
+apt-get -y install fail2ban;service fail2ban restart
 
 # install squid3
 apt-get -y install squid3
@@ -129,6 +148,7 @@ service webmin restart
 
 # download script
 cd /usr/bin
+wget -O speedtest "https://raw.githubusercontent.com/ForNesiaFreak/FNS_Debian7/fornesia.com/null/speedtest_cli.py"
 wget -O menu "https://raw.githubusercontent.com/nexne/ani/master/menu.sh"
 wget -O usernew "https://raw.githubusercontent.com/nexne/ani/master/usernew.sh"
 wget -O trial "https://raw.githubusercontent.com/nexne/ani/master/trial.sh"
@@ -136,7 +156,6 @@ wget -O hapus "https://raw.githubusercontent.com/nexne/ani/master/hapus.sh"
 wget -O cek "https://raw.githubusercontent.com/nexne/ani/master/user-login.sh"
 wget -O member "https://raw.githubusercontent.com/nexne/ani/master/user-list.sh"
 wget -O resvis "https://raw.githubusercontent.com/nexne/ani/master/resvis.sh"
-wget -O speedtest "https://raw.githubusercontent.com/ForNesiaFreak/FNS_Debian7/fornesia.com/null/speedtest_cli.py"
 wget -O info "https://raw.githubusercontent.com/nexne/ani/master/info.sh"
 wget -O about "https://raw.githubusercontent.com/nexne/ani/master/about.sh"
 echo "0 0 * * * root /usr/bin/reboot" > /etc/cron.d/reboot
@@ -155,7 +174,7 @@ chmod +x about
 # finishing
 cd
 chown -R www-data:www-data /home/vps/public_html
-service nginx start
+#service nginx start
 service openvpn restart
 service cron restart
 service ssh restart
