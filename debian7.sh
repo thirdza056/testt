@@ -251,6 +251,7 @@ echo "cek (Cek User Login)"  | tee -a log-install.txt
 echo "member (Cek Member SSH)"  | tee -a log-install.txt
 echo "resvis (Restart Service dropbear, webmin, squid3, openvpn dan ssh)"  | tee -a log-install.txt
 echo "reboot (Reboot VPS)"  | tee -a log-install.txt
+echo "autoreb (AutoReboot VPS)"  | tee -a log-install.txt
 echo "speedtest (Speedtest VPS)"  | tee -a log-install.txt
 echo "info (Menampilkan Informasi Sistem)"  | tee -a log-install.txt
 echo "about (Informasi tentang script auto install)"  | tee -a log-install.txt
