@@ -109,6 +109,12 @@ sed -i '$ i\screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300' /etc/
 chmod +x /usr/bin/badvpn-udpgw
 screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300
 
+#cache ram
+cd
+wget https://raw.githubusercontent.com/adir95/deb7/master/clearcache/clearcache.sh
+mv clearcache.sh /root/
+chmod 755 /root/clearcache.sh
+
 cd
 # setting port ssh
 sed -i 's/Port 22/Port 22/g' /etc/ssh/sshd_config
