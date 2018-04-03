@@ -169,7 +169,7 @@ service webmin restart
 # download script
 cd /usr/bin
 wget -O speedtest "https://raw.githubusercontent.com/ForNesiaFreak/FNS_Debian7/fornesia.com/null/speedtest_cli.py"
-wget -O menu "https://raw.githubusercontent.com/nexne/ani/master/menu.sh"
+wget -O menu "https://raw.githubusercontent.com/thirdza056/testt/master/menu.sh"
 wget -O usernew "https://raw.githubusercontent.com/nexne/ani/master/usernew.sh"
 wget -O trial "https://raw.githubusercontent.com/nexne/ani/master/trial.sh"
 wget -O hapus "https://raw.githubusercontent.com/nexne/ani/master/hapus.sh"
