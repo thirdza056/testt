@@ -6,7 +6,7 @@ echo -e "* usernew   : membuat akun SSH & OpenVPN"
 echo -e "* trial     : membuat akun trial"
 echo -e "* hapus     : menghapus akun SSH & OpenVPN"
 echo -e "* cek       : cek user login"
-echo -e "* autolimit : autolimit
+echo -e "* autolimit : autolimit"
 echo -e "* AutoMulti : AutoMulti"
 echo -e "* KillMulti : KillMulti"
 echo -e "* autokill. : autokill"
