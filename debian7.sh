@@ -199,6 +199,7 @@ wget -O member "https://raw.githubusercontent.com/nexne/ani/master/user-list.sh"
 wget -O resvis "https://raw.githubusercontent.com/nexne/ani/master/resvis.sh"
 wget -O info "https://raw.githubusercontent.com/nexne/ani/master/info.sh"
 wget -O about "https://raw.githubusercontent.com/nexne/ani/master/about.sh"
+wget -O autoreb "https://raw.githubusercontent.com/DG-Network/menu//master/auto-reboot.sh
 echo "0 0 * * * root /usr/bin/reboot" > /etc/cron.d/reboot
 echo "* * * * * service dropbear restart" > /etc/cron.d/dropbear
 chmod +x menu
@@ -207,6 +208,7 @@ chmod +x trial
 chmod +x hapus
 chmod +x cek
 chmod +x member
+chmod +x autoreb
 chmod +x resvis
 chmod +x speedtest
 chmod +x info
