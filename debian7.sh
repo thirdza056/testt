@@ -116,41 +116,6 @@ mv clearcache.sh /root/
 chmod 755 /root/clearcache.sh
 
 cd
-wget https://raw.githubusercontent.com/elhad/cstup/master/config/autolimit.sh
-mv ./autolimit.sh /usr/bin/autolimit.sh
-chmod +x /usr/bin/autolimit.sh
-
-# instal Auto Limit Script Multi Login
-cd
-wget https://raw.githubusercontent.com/elhad/cstup/master/config/auto-limit-script.sh
-mv ./auto-limit-script.sh /usr/local/bin/auto-limit-script.sh
-chmod +x /usr/local/bin/auto-limit-script.sh
-
-# instal Melihat detail user SSH & OpenVPN 
-cd
-wget https://raw.githubusercontent.com/elhad/cstup/master/config/userdetail.sh
-mv ./userdetail.sh /usr/bin/userdetail.sh
-chmod +x /usr/bin/userdetail.sh
-
-# instal Delete Akun Expire
-cd
-wget https://raw.githubusercontent.com/elhad/cstup/master/config/deleteuserexpire.sh
-mv ./deleteuserexpire.sh /usr/bin/deleteuserexpire.sh
-chmod +x /usr/bin/deleteuserexpire.sh
-
-# instal  Kill Multi Login
-cd
-wget https://raw.githubusercontent.com/elhad/cstup/master/config/autokilluser.sh
-mv ./autokilluser.sh /usr/bin/autokilluser.sh
-chmod +x /usr/bin/autokilluser.sh
-
-# instal  Kill Multi Login2
-cd
-wget https://raw.githubusercontent.com/elhad/cstup/master/config/autokill.sh
-mv ./autokill.sh /usr/bin/autokill.sh
-chmod +x /usr/bin/autokill.sh
-
-cd
 # setting port ssh
 sed -i 's/Port 22/Port 22/g' /etc/ssh/sshd_config
 sed -i '/Port 22/a Port 143' /etc/ssh/sshd_config
@@ -234,7 +199,11 @@ wget -O member "https://raw.githubusercontent.com/nexne/ani/master/user-list.sh"
 wget -O resvis "https://raw.githubusercontent.com/nexne/ani/master/resvis.sh"
 wget -O info "https://raw.githubusercontent.com/nexne/ani/master/info.sh"
 wget -O about "https://raw.githubusercontent.com/nexne/ani/master/about.sh"
-wget -O autoreb "https://raw.githubusercontent.com/DG-Network/menu//master/auto-reboot.sh
+wget -O AutoMulti "https://raw.githubusercontent.com/elhad/cstup/master/config/autolimit.sh
+wget -O autolimit "https://raw.githubusercontent.com/elhad/cstup/master/config/auto-limit-script.sh
+wget -O KillMulti "https://raw.githubusercontent.com/elhad/cstup/master/config/autokilluser.sh
+wget -O autokill "https://raw.githubusercontent.com/elhad/cstup/master/config/autokill.sh
+
 echo "0 0 * * * root /usr/bin/reboot" > /etc/cron.d/reboot
 echo "* * * * * service dropbear restart" > /etc/cron.d/dropbear
 chmod +x menu
@@ -242,6 +211,10 @@ chmod +x usernew
 chmod +x trial
 chmod +x hapus
 chmod +x cek
+chmod +x autolimit
+chmod +x AutoMulti
+chmod +x KillMulti
+chmod +x autokill
 chmod +x member
 chmod +x autoreb
 chmod +x resvis
