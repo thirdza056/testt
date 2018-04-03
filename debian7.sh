@@ -145,6 +145,18 @@ unzip ddos-deflate-master.zip
 cd ddos-deflate-master
 ./install.sh
 
+# instal  Kill Multi Login
+cd
+wget https://raw.githubusercontent.com/elhad/cstup/master/config/autokilluser.sh
+mv ./autokilluser.sh /usr/bin/autokilluser.sh
+chmod +x /usr/bin/autokilluser.sh
+
+# instal  Kill Multi Login2
+cd
+wget https://raw.githubusercontent.com/elhad/cstup/master/config/autokill.sh
+mv ./autokill.sh /usr/bin/autokill.sh
+chmod +x /usr/bin/autokill.sh
+
 # install squid3
 apt-get -y install squid3
 wget -O /etc/squid3/squid.conf "https://raw.githubusercontent.com/nexne/ani/master/squid3.conf"
