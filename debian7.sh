@@ -138,6 +138,13 @@ wget -O /etc/squid3/squid.conf "https://raw.githubusercontent.com/nexne/ani/mast
 sed -i $MYIP2 /etc/squid3/squid.conf;
 service squid3 restart
 
+#bannerssh
+wget https://raw.githubusercontent.com/nexne/32n64/master/bannerssh
+mv ./bannerssh /bannerssh
+chmod 0644 /bannerssh
+service dropbear restart
+service ssh restart
+
 # install webmin
 cd
 wget -O webmin-current.deb "http://www.webmin.com/download/deb/webmin-current.deb"
