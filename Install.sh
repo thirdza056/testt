@@ -950,8 +950,6 @@ echo 'echo -e "${blue}--------------------------------เริ่มการ�
 
 echo 'echo -e ""' >> .bashrc
 
-fi
-
 # go to root
 cd
 
