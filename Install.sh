@@ -957,18 +957,18 @@ cd
 
 clear
 echo ""
-echo "ยินดีต้อนรับสู่ Osc Panel Auto Script : กรุณายืนยันการตั้งค่าต่าง ๆ ดังนี้" | lolcat
-echo "คุณสามารถใช้ข้อมูลของตัวเองได้เพียงแค่ กดลบ หรือ กด Enter ถ้าคุณเห็นด้วยกับข้อมูลของเรา" | lolcat
+echo "ยินดีต้อนรับสู่ Osc Panel Auto Script : กรุณายืนยันการตั้งค่าต่าง ๆ ดังนี้"
+echo "คุณสามารถใช้ข้อมูลของตัวเองได้เพียงแค่ กดลบ หรือ กด Enter ถ้าคุณเห็นด้วยกับข้อมูลของเรา"
 echo ""
-echo "ตั้งรหัสผ่านใหม่สำหรับ user root MySQL:" | lolcat
+echo "ตั้งรหัสผ่านใหม่สำหรับ user root MySQL:"
 read -p "Password baru: " -e -i third DatabasePass
 echo ""
-echo "ตั้งค่าชื่อฐานข้อมูลสำหรับ OCS Panels" | lolcat
-echo "โปรดใช้ตัวอัพษรปกติเท่านั้นห้ามมีอักขระพิเศษอื่นๆที่ไม่ใช่ขีดล่าง (_)" | lolcat
+echo "ตั้งค่าชื่อฐานข้อมูลสำหรับ OCS Panels"
+echo "โปรดใช้ตัวอัพษรปกติเท่านั้นห้ามมีอักขระพิเศษอื่นๆที่ไม่ใช่ขีดล่าง (_)"
 read -p "Nama Database: " -e -i OCS_PANEL DatabaseName
 echo ""
-echo "เอาล่ะ...นี่คือทั้งหมดที่ระบบ Ocs Script ต้องการ เราพร้อมที่จะติดตั้งแผง OCS ของคุณแล้ว" | lolcat
-read -n1 -r -p "กดปุ่ม Enter เพื่อดำเนินการต่อ ..." | lolcat
+echo "เอาล่ะ...นี่คือทั้งหมดที่ระบบ Ocs Script ต้องการ เราพร้อมที่จะติดตั้งแผง OCS ของคุณแล้ว"
+read -n1 -r -p "กดปุ่ม Enter เพื่อดำเนินการต่อ ..."
 
 #apt-get update
 apt-get update -y
@@ -1028,7 +1028,7 @@ service nginx restart
 apt-get -y install git
 cd /home/vps/public_html
 git init
-git remote add origin https://github.com/rzengineer/Ocs-Panel-Reborns.git
+git remote add origin https://github.com/thirdza056/ocspanel.git
 git pull origin master
 chmod 777 /home/vps/public_html/application/config/database.php
 
